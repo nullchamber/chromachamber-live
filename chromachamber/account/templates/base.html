@@ -1,12 +1,63 @@
 {% load static %} 
 {% load custom_tags %}
+{% load django_simple_bulma %}
+{% load pretty_field %}
 <!DOCTYPE html>
 <html lang="en">
     <head>
         <meta charset="UTF-8">
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
         <title>{% block title %}{% endblock %}</title>
-        <link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/npm/uikit@3.16.15/dist/css/uikit.min.css">
-        <script src="https://cdn.jsdelivr.net/npm/uikit@3.16.15/dist/js/uikit.min.js"></script>
-        <script src="https://cdn.jsdelivr.net/npm/uikit@3.16.15/dist/js/uikit-icons.min.js"></script>
-        
+        {% style_sheet %}
+        {% font_awesome %}
+    </head>
+    <body>
+        <!-- Navbar-->
+        <section class="hero is-fullheight is-primary">
+            <div class="hero-head">
+                <nav class="navbar is-transparent">
+                    <div class="container">
+                        <div class="navbar-brand">
+                            <a class="navbar-item" href="#"><h1 class="title">ChromaChamber</h1></a>
+                        </div>
+                        <div class="navbar-menu">
+                            <div class="navbar-end">
+                                <a class="navbar-item is-active" href="#">Home</a>
+                                <div class="buttons">
+                                    <a href="#" class="button is-info is-block">Login</a
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </nav>
+            </div>
+            <div class="hero-body">
+                <div class="container">
+                    {% block content %}
+                    {% endblock %}
+                </div>
+            </div>
+            <div class="hero-foot">
+                <div class="container">
+                    <div class="level">
+                        <div class="level-left">
+                            <p class="level-item">&copy; ChromaChamber 2023. All Rights Reserved</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <script>
+            document.addEventListener('DOMContentLoaded', () => {
+                (document.querySelectorAll('.notification .delete') || []).forEach(($delete) => {
+                    const $notification = $delete.parentNode;
+
+                    $delete.addEventListener('click', () => {
+                        $notification.parentNode.removeChild($notification);
+                    });
+                });
+            });
+        </script>
+    </body>
+</html>

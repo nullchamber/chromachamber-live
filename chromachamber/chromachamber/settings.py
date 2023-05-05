@@ -39,6 +39,8 @@ INSTALLED_APPS = [
     'django.contrib.messages',
     'django.contrib.staticfiles',
     'custom_tags.apps.CustomTagsConfig',
+    'django_simple_bulma',
+    'bulma',
 ]
 
 MIDDLEWARE = [
@@ -118,8 +120,35 @@ USE_TZ = True
 # https://docs.djangoproject.com/en/4.1/howto/static-files/
 
 STATIC_URL = 'static/'
+STATIC_ROOT = BASE_DIR / 'static'
 
 # Default primary key field type
 # https://docs.djangoproject.com/en/4.1/ref/settings/#default-auto-field
 
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
+
+STATICFILES_FINDERS = [
+    'django.contrib.staticfiles.finders.FileSystemFinder',
+    'django.contrib.staticfiles.finders.AppDirectoriesFinder',
+    'django_simple_bulma.finders.SimpleBulmaFinder',
+]
+
+BULMA_SETTINGS = {
+    'extensions': [
+        'bulma-collapsible',
+
+    ],
+    "variables":  {
+    'background': '#50485B',
+    'primary': '#C879FF',
+    'danger': '#FF595E',
+    "info": "#69DDFF",
+    "warning": "#F4D06F",
+    "link" :"#0B7189",
+    "success": "#8ED081",
+    "light": "#EAE8ED",
+    "dark": "#50485B",
+    }    
+
+
+}

@@ -1,0 +1,49 @@
+{% extends "base.html" %}
+{% load custom_tags %}
+{% block title %}Login{% endblock %}
+{% block content %}
+<!-- Login Form-->
+<div class="columns">
+<div class="column is-one-third">
+    <div class="box has-background-dark">
+        <h2 class="title is-4 has-text-primary-light">Login</h2>
+        <form action="{% url 'login' %}" method="post">
+            {% csrf_token %}
+            {% for field in form %}
+            <div class="field">
+                {{ field|getlabel:"label has-text-primary-light" }}
+                <div class="control">
+                    {{ field|clsmarkup:"input" }}
+                </div>
+            </div>
+            {% endfor %}
+            <input type="hidden" name="next" value="{{ next }}">
+            <br><br>
+            <div class="field">
+                <div class="control">
+                    <input type="submit" class="button is-fullwidth is-block is-info" value="Login">
+                </div>
+            </div>
+        </form>
+    </div>
+</div>
+<div class="column is-two-fifths is-offset-one-fifth">
+    {% if form.errors %}
+    <!-- {% for error in form.errors %}
+    <div class="notification is-danger">
+        <button class="delete"></button>
+        <p class="content">
+            {{ error }}
+        </p>
+    </div>
+    {% endfor %} -->
+    <div class="notification is-danger">
+        <button class="delete"></button>
+        <p class="content">
+            Your credentials did not authenticate!
+        </p>
+    </div>
+    {% endif %}
+</div>
+</div>
+{% endblock %}
