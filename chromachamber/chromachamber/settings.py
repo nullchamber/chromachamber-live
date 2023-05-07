@@ -140,14 +140,14 @@ BULMA_SETTINGS = {
     ],
     "variables":  {
     'background': '#50485B',
-    'primary': '#C879FF',
+    'primary': '#B9A3D1',
     'danger': '#FF595E',
     "info": "#69DDFF",
     "warning": "#F4D06F",
     "link" :"#0B7189",
     "success": "#8ED081",
     "light": "#EAE8ED",
-    "dark": "#50485B",
+    "dark": "#2eile 2e2e",
     }    
 
 
